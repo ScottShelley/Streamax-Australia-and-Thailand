@@ -1,0 +1,152 @@
+<div class="container">
+  <ol class="breadcrumb container">
+    <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+    <li class="breadcrumb-item active">Quote Me</li>
+  </ol>
+  <h1 class="text-center">Quote Me</h1>
+  <p class="text-center">Let us quote you on your solution today that you require!</p>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="row">
+      <div class="col-md">
+        <div class="form-group">
+          <label for="name">Name <span class="text-danger">*</span></label>
+          <input type="text" class="form-control" id="name" placeholder="Enter First and Surname Name, E.G. John Smith" formControlName="name">
+          <p class="text-danger" *ngIf="!form.controls['name'].valid && form.controls['name'].touched">Name is Required!</p>
+        </div>
+      </div>
+      <div class="col-md">
+        <div class="form-group">
+          <label for="company">Company Name</label>
+          <input type="text" class="form-control" id="company" formControlName="company">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email <span class="text-danger">*</span></label>
+          <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" formControlName="email">
+          <div *ngIf="form.get('email').touched && form.get('email').invalid" class="text-danger">
+            <p *ngIf="form.controls['email'].errors.required">Email is required</p>
+            <p *ngIf="form.controls['email'].errors.email">This email is not a valid email address</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md">
+        <div class="form-group">
+          <label for="phoneNumber">Phone Number <span class="text-danger">*</span></label>
+          <input type="text" class="form-control" id="phoneNumber" placeholder="" formControlName="phoneNumber">
+          <p class="text-danger" *ngIf="!form.controls['phoneNumber'].valid && form.controls['phoneNumber'].touched">Phone Number is Required!</p>
+        </div>    
+      </div>
+    </div>
+    <fieldset class="form-group">
+      <legend>vehicles <span class="text-danger">*</span></legend>
+      <div formArrayName="vehicles" *ngFor="let item of form.get('vehicles').controls; let i = index;">
+        <div class="row" [formGroupName]="i">
+          <div class="col-md form-group">
+            <input type="text" class="form-control" formControlName="make" placeholder="Make">
+          </div>
+          <div class="col-md form-group">
+            <input type="text" class="form-control" formControlName="model" placeholder="Model">
+          </div>
+          <div class="col-md form-group">
+            <input type="number" class="form-control" formControlName="number" placeholder="Number of Vehicle">
+          </div>
+          <div class="col-md-2 form-group">
+            <button *ngIf="i != 0" type="button" class="btn btn-outline-danger" (click)="removeVehicle(i)">Remove Vehicle</button>
+          </div>
+        </div>
+      </div>
+      <p class="text-danger" *ngIf="!form.controls['vehicles'].valid && form.controls['vehicles'].touched">Missing fields in Vehicles!</p>
+      <button type="button" class="btn btn-outline-success" (click)="addToVehicle()">Add Vehicle</button>
+    </fieldset>
+    <div class="row">
+      <div class="col-md">
+        <fieldset class="form-group">
+          <legend>Select Option <span class="text-danger">*</span></legend>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" formControlName="option" id="option1" value="AHD">
+              AHD
+            </label>
+          </div>
+          <div class="form-check">
+          <label class="form-check-label">
+              <input type="radio" class="form-check-input" formControlName="option" id="option2" value="Analog">
+              Analog
+            </label>
+          </div>
+          <div class="form-check disabled">
+          <label class="form-check-label">
+              <input type="radio" class="form-check-input" formControlName="option" id="option3" value="IP">
+              IP
+            </label>
+          </div>
+          <div class="form-check disabled">
+          <label class="form-check-label">
+              <input type="radio" class="form-check-input" formControlName="option" id="option4" value="Not Sure">
+              Not Sure
+            </label>
+          </div>
+        </fieldset>
+      </div>
+      <div class="col-md">
+        <fieldset class="form-group">
+          <legend>Resolution <span class="text-danger">*</span></legend>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" formControlName="resolution" id="resolution1" value="D1">
+              D1
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" formControlName="resolution" id="resolution2" value="720P">
+              720P
+            </label>
+          </div>
+          <div class="form-check disabled">
+          <label class="form-check-label">
+              <input type="radio" class="form-check-input" formControlName="resolution" id="resolution3" value="1080P">
+              1080P
+            </label>
+          </div>
+          <div class="form-check disabled">
+          <label class="form-check-label">
+              <input type="radio" class="form-check-input" formControlName="resolution" id="resolution3" value="Not Sure">
+              Not Sure
+            </label>
+          </div>
+        </fieldset>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="camerasNumber">Number of Cameras <span class="text-danger">*</span></label>
+      <input type="number" class="form-control" id="camerasNumber" formControlName="camerasNumber">
+      <p class="text-danger" *ngIf="!form.controls['camerasNumber'].valid && form.controls['camerasNumber'].touched">Cameras Number is Required!</p>
+    </div>
+    <div class="form-group">
+      <label for="recording">Average hours of recording per day <span class="text-danger">*</span></label>
+      <input type="text" class="form-control" id="recording" formControlName="recording">
+      <p class="text-danger" *ngIf="!form.controls['recording'].valid && form.controls['recording'].touched">Average Recording Per Day is Required!</p>
+    </div>
+    <div class="form-group">
+      <label for="footage">How long would you like to keep the footage? <span class="text-danger">*</span></label>
+      <input type="text" class="form-control" id="footage" formControlName="footage">
+      <p class="text-danger" *ngIf="!form.controls['footage'].valid && form.controls['footage'].touched">Footage is Required!</p>
+    </div>
+    <div class="form-group">
+      <label for="furtherInfor">Any further information</label>
+      <textarea class="form-control" id="furtherInfor" formControlName="furtherInfor"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="budget">Budget</label>
+      <input type="text" class="form-control" id="budget" formControlName="budget">
+    </div>
+    
+    
+    <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Submit</button>
+    <button type="button" (click)="form.reset()" class="btn btn-secondary">Reset</button>
+  </form>
+</div>

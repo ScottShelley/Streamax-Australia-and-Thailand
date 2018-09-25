@@ -1,0 +1,11 @@
+<ol class="breadcrumb container">
+  <li class="breadcrumb-item"><a routerLink="">Home</a></li>
+  <li class="breadcrumb-item"><a routerLink="/our-products">Our Products</a></li>
+  <li class="breadcrumb-item"><a routerLink="/cameras">Cameras</a></li>
+  <li class="breadcrumb-item active text-uppercase">{{ category }}</li>
+</ol>
+<div class="container" *ngIf="products">
+  <h1 class="text-center text-uppercase">Cameras {{ category }}</h1>
+  <hr>
+  <app-display-products *ngIf="products" [products]="products"></app-display-products>
+</div>

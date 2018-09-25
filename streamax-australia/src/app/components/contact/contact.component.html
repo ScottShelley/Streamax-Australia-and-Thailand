@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-md-6">
+    <p class="text-danger lead text-center" *ngIf="message">{{ message }}</p>
+    <p class="text-success lead text-center" *ngIf="error">{{ error }}</p>
+      <form [formGroup]="form" (ngSubmit)="submit()">
+        <div class="form-group">
+          <label for="name">Name <span class="text-danger">*</span></label>
+          <input type="text" class="form-control" id="name" placeholder="Enter First and Surname Name, E.G. John Smith" formControlName="name">
+          <p class="text-danger" *ngIf="!form.controls['name'].valid && form.controls['name'].touched">Name is Required!</p>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Email <span class="text-danger">*</span></label>
+            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" formControlName="email">
+            <div *ngIf="form.get('email').touched && form.get('email').invalid" class="text-danger">
+              <p *ngIf="form.controls['email'].errors.required">Email is required</p>
+              <p *ngIf="form.controls['email'].errors.email">This email is not a valid email address</p>
+            </div>
+          </div>
+        <div class="form-group">
+          <label for="subject">Subject <span class="text-danger">*</span></label>
+          <input type="text" class="form-control" id="subject" placeholder="" formControlName="subject">
+          <p class="text-danger" *ngIf="!form.controls['subject'].valid && form.controls['subject'].touched">Subject is Required!</p>
+        </div>
+        <div class="form-group">
+          <label for="message">Message <span class="text-danger">*</span></label>
+          <textarea class="form-control" id="message" formControlName="message"></textarea>
+          <p class="text-danger" *ngIf="!form.controls['message'].valid && form.controls['message'].touched">Message is Required!</p>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Submit</button>
+        <button type="button" (click)="form.reset()" class="btn btn-secondary">Reset</button>
+      </form>
+  </div>
+  <div class="col-md-6">
+    <p class="text-center">phone: <a href="tel:1300 822 986">1300 822 986</a></p>
+    <p class="text-center">Email: <a href="mailto:info@streamaxaustralia.com.au">info@streamaxaustralia.com.au</a></p>
+    <p class="text-center">Address: Unit 35, 7 Hoyle Ave, Castle Hill NSW 2154, Australia</p>
+    <agm-map [latitude]="-33.731531" [longitude]="150.984731">
+      <agm-marker [latitude]="-33.731531" [longitude]="150.984731">
+        <agm-info-window>Unit 35, 7 Hoyle Ave, Castle Hill NSW 2154, Australia</agm-info-window>
+      </agm-marker>
+    </agm-map>
+  </div>
+</div>

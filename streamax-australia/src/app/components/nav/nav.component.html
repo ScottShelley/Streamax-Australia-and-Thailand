@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light nav-bg-colour">
+  <a class="navbar-brand" routerLink="">
+    <img src="assets/img/streamax-logo.png" alt="Logo" class="d-inline-block align-top max-width">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="float-right d-md-none">
+    <a class="mobile-a" href="mailto:info@streamaxaustralia.com.au">
+        <i class="fas fa-envelope-square"></i>
+    </a>
+    <a class="mobile-a" href="tel:1300 822 986">
+        <i class="fas fa-phone-square"></i>
+    </a>  
+  </div>
+  
+
+  <div class="collapse navbar-collapse" id="navbarColor01">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown" routerLinkActive="active current">
+        <a class="nav-link" routerLink="/our-solutions">Our Solutions</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" *ngFor="let item of solutions" routerLink="/our-solutions/{{item.Name.S}}">{{item.Name.S}}</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown" routerLinkActive="active current">
+        <a class="nav-link" routerLink="/our-products">Our Products</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" routerLink="/mdvr">MDVRs</a>
+          <a class="dropdown-item" routerLink="/cameras">Cameras</a>
+          <a class="dropdown-item" routerLink="/ceiba">CEIBA 2</a>
+          <a class="dropdown-item" routerLink="/n9m-platform-firmware">N9M Platform Firmware</a>
+          <a class="dropdown-item" routerLink="/auto-station-report">Auto Station Report</a>
+          <a class="dropdown-item" routerLink="/central-monitoring-software">Central Monitoring Software</a>
+          <a class="dropdown-item" routerLink="/accessories">Accessories</a>
+        </div>
+      </li>
+      <!-- <li class="nav-item" routerLinkActive="active current">
+        <a class="nav-link" routerLink="/our-partners">Our Partners</a>
+      </li> -->
+      <li class="nav-item" routerLinkActive="active current">
+        <a class="nav-link" routerLink="/about-us">About Us</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active current">
+        <a class="nav-link" routerLink="/contact-us">Contact Us</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0" [formGroup]="form" (ngSubmit)="submit()">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search for Products" formControlName="search">
+      <button class="btn btn-primary my-2 my-sm-0" type="submit" [disabled]="form.invalid">Search</button>
+    </form>
+  </div>
+</nav>

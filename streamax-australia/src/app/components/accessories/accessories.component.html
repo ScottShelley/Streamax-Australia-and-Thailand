@@ -1,0 +1,10 @@
+<ol class="breadcrumb container">
+  <li class="breadcrumb-item"><a routerLink="">Home</a></li>
+  <li class="breadcrumb-item"><a routerLink="/our-products">Our Products</a></li>
+  <li class="breadcrumb-item active">Accessories</li>
+</ol>
+<section class="container">
+  <h1 class="text-center">Accessories</h1>
+  <hr>
+  <app-display-products *ngIf="products" [products]="products"></app-display-products>
+</section>

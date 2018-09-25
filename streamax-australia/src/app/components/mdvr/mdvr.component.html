@@ -1,0 +1,11 @@
+<ol class="breadcrumb container">
+  <li class="breadcrumb-item"><a routerLink="">Home</a></li>
+  <li class="breadcrumb-item"><a routerLink="/our-products">Our Products</a></li>
+  <li class="breadcrumb-item active">MDVR</li>
+</ol>
+<section class="container">
+  <h1 class="text-center">MDVR</h1>
+  <p>As a leading manufacturer of quality products, Streamax Australia is a major player in the industry. We’ve been supplying our goods to well-known local and global companies for years, and have developed an excellent reputation within the community. Our engineers are closely supported by a team of highly trained professionals, and ensure that all of our products embody the latest design, technological and usability breakthroughs.</p>
+  <hr>
+  <app-display-products *ngIf="products" [products]="products"></app-display-products>
+</section>

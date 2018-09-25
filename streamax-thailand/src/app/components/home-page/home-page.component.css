@@ -1,0 +1,16 @@
+.main-about {
+    background-color: rgb(245, 245, 245);
+    padding: 2em 0;
+}
+
+.section-solutions {
+    margin: 2em 0;
+}
+
+.section-products {
+    margin: 2em 0;
+}
+
+.section-products > article {
+    margin: 1em 0;
+}

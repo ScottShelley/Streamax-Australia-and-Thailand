@@ -1,0 +1,16 @@
+<div class="container" *ngIf="products">
+    <h1 class="text-center">Search Result</h1>
+    <hr>
+    <div class="row" *ngIf="products.Items.length > 0; else noResult">
+      <article class="col-md-6" *ngFor="let item of products.Items">
+        <a [routerLink]="'/product/' + item.URL.S">
+          <h2 class="text-center">{{ item.Name.S }}</h2>
+          <img class="d-block w-100" [src]="item.ImgUrl.S" [alt]="'Image of ' + item.Name.S">
+        </a>
+        <p class="text-center"><a [routerLink]="'/product/' + item.URL.S" class="btn btn-outline-info">Learn More</a></p>
+      </article>
+    </div>
+    <ng-template #noResult>
+      <p class="lead text-center">There was no result for {{ search }}</p>
+    </ng-template>
+  </div>

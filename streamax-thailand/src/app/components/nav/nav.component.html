@@ -1,0 +1,85 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light nav-bg-colour">
+  <a class="navbar-brand" routerLink="">
+    <img src="assets/img/streamax-logo.png" alt="Logo" class="d-inline-block align-top max-width">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="float-right d-md-none">
+    <a class="mobile-a" href="mailto:info@streamaxaustralia.com.au">
+        <i class="fas fa-envelope-square"></i>
+    </a>
+    <a class="mobile-a" href="tel:1300 822 986">
+        <i class="fas fa-phone-square"></i>
+    </a>  
+  </div>
+  
+
+  <div class="collapse navbar-collapse" id="navbarColor01">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown" routerLinkActive="active current">
+        <a class="nav-link" routerLink="/our-solutions">
+          <span *ngIf="lang.getLang() == 'english'">Our Solutions</span>
+          <span *ngIf="lang.getLang() == 'thai'">โซลูชั่นของเรา</span>
+        </a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" *ngFor="let item of service.solutions" routerLink="/our-solutions/{{item.URL.S}}">
+            <span *ngIf="lang.getLang() == 'english'">{{item.Name.S}}</span>
+            <span *ngIf="lang.getLang() == 'thai'">{{item.ThaiName.S}}</span>
+          </a>
+        </div>
+      </li>
+      <li class="nav-item dropdown" routerLinkActive="active current">
+        <a class="nav-link" routerLink="/our-products">
+          <span *ngIf="lang.getLang() == 'english'">Our Products</span>
+          <span *ngIf="lang.getLang() == 'thai'">ผลิตภัณฑ์ของเรา</span>
+        </a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" routerLink="/mdvr">MDVRs</a>
+          <a class="dropdown-item" routerLink="/cameras">
+            <span *ngIf="lang.getLang() == 'english'">Cameras</span>
+            <span *ngIf="lang.getLang() == 'thai'">กล้อง</span>
+          </a>
+          <a class="dropdown-item" routerLink="/ceiba">CEIBA 2</a>
+          <a class="dropdown-item" routerLink="/n9m-platform-firmware">N9M Platform Firmware</a>
+          <a class="dropdown-item" routerLink="/auto-station-report">Auto Station Report</a>
+          <a class="dropdown-item" routerLink="/central-monitoring-software">Central Monitoring Software</a>
+          <a class="dropdown-item" routerLink="/accessories">
+            <span *ngIf="lang.getLang() == 'english'">Accessories</span>
+            <span *ngIf="lang.getLang() == 'thai'">อุปกรณ์</span>
+          </a>
+        </div>
+      </li>
+      <!-- <li class="nav-item" routerLinkActive="active current">
+        <a class="nav-link" routerLink="/our-partners">Our Partners</a>
+      </li> -->
+      <li class="nav-item" routerLinkActive="active current">
+        <a class="nav-link" routerLink="/about-us">
+          <span *ngIf="lang.getLang() == 'english'">About Us</span>
+          <span *ngIf="lang.getLang() == 'thai'">เกี่ยวกับเรา</span>
+        </a>
+      </li>
+      <li class="nav-item" routerLinkActive="active current">
+        <a class="nav-link" routerLink="/contact-us">
+          <span *ngIf="lang.getLang() == 'english'">Contact Us</span>
+          <span *ngIf="lang.getLang() == 'thai'">ติดต่อเรา</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <select class="nav-link form-control" (change)="onLangChange($event.target.value)">
+          <option value="english" [selected]="lang.getLang() == 'english'">English</option>
+          <option value="thai" [selected]="lang.getLang() == 'thai'">Thai</option>
+        </select>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0" [formGroup]="form" (ngSubmit)="submit()" *ngIf="lang.getLang() == 'english'">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search for Products" formControlName="search">
+      <button class="btn btn-primary my-2 my-sm-0" type="submit" [disabled]="form.invalid">Search</button>
+    </form>
+    <form class="form-inline my-2 my-lg-0" [formGroup]="form" (ngSubmit)="submit()" *ngIf="lang.getLang() == 'thai'">
+      <input class="form-control mr-sm-2" type="text" placeholder="ค้นหาผลิตภัณฑ์" formControlName="search">
+      <button class="btn btn-primary my-2 my-sm-0" type="submit" [disabled]="form.invalid">ค้นหา</button>
+    </form>
+  </div>
+</nav>

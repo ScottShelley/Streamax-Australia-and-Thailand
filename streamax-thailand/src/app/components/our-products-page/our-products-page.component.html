@@ -1,0 +1,118 @@
+<div class="container">
+  <main>
+    <h1 class="text-center">
+      <span *ngIf="lang.getLang() == 'english'">Our Products</span>
+      <span *ngIf="lang.getLang() == 'thai'">ผลิตภัณฑ์ของเรา</span>
+    </h1>
+    <p *ngIf="lang.getLang() == 'english'">As a leading manufacturer of quality products, Streamax Thailand is a major player in the industry. We’ve been supplying our goods to well-known local and global companies for years, and have developed an excellent reputation within the community. Our engineers are closely supported by a team of highly trained professionals, and ensure that all of our products embody the latest design, technological and usability breakthroughs.</p>
+    <p *ngIf="lang.getLang() == 'thai'">ในฐานะผู้ผลิตชั้นนำด้านผลิตภัณฑ์ที่มีคุณภาพ Streamax Thailand เป็นผู้ผลิตรายใหญ่ของอุตสาหกรรม เราได้รับการจัดหา บริษัท ในประเทศและทั่วโลกเป็นเวลาหลายปีและได้มีการพัฒนาชื่อเสียงที่ยอดเยี่ยมภายในชุมชน วิศวกรของเราได้รับการสนับสนุนอย่างใกล้ชิดโดยทีมงานมืออาชีพที่ได้รับการฝึกอบรมมาอย่างดีและมั่นใจได้ว่าเราทุกคนจะได้รับการออกแบบใหม่ล่าสุดเทคโนโลยีและนวัตกรรมที่ใช้งานได้</p>
+  </main>
+  <section>
+    <article>
+      <h2 class="text-center">MDVRs</h2>
+      <p *ngIf="lang.getLang() == 'english'">Our MDVRs have been used by the biggest transport companies in both Thailand and New Zealand  for years.  Developed to suit your specific needs by our talented technical team, these products are truly one-of-a-kind. With a large and comprehensive range, we have products to suit the needs of the smallest to the largest of transport companies.</p>
+      <p *ngIf="lang.getLang() == 'thai'">MDVRs ของเราถูกใช้โดย บริษัท ที่ใหญ่ที่สุดทั้งในไทยและนิวซีแลนด์มาหลายปีแล้ว ผลิตภัณฑ์เหล่านี้เป็นจริงอย่างหนึ่งของชนิด เรามีข้อกำหนดดังต่อไปนี้</p>
+      <div class="row">
+        <div class="col-md" *ngFor="let item of products">
+          <a routerLink="/mdvr/{{ item.URL.S }}">
+            <p class="lead text-center">{{ item.Name.S }}</p>
+            <img class="w-100" [src]="item.ImgUrl.S" [alt]="item.Name.S">
+          </a>
+        </div>
+      </div>
+      <p class="text-center margin-top-1em"><a routerLink="/mdvr" class="btn btn-primary">
+        <span *ngIf="lang.getLang() == 'english'">View all our MDVRs</span>
+        <span *ngIf="lang.getLang() == 'thai'">ดู MDVR ทั้งหมดของเรา</span>
+      </a></p>
+    </article>
+    <hr>
+    <article>
+      <h2 class="text-center">
+        <span *ngIf="lang.getLang() == 'english'">Cameras</span>
+        <span *ngIf="lang.getLang() == 'thai'">กล้อง</span>
+      </h2>
+      <p *ngIf="lang.getLang() == 'english'">Our vast stock of IP, Analog and AHD cameras are specifically chosen and designed to create a wide range of choices for transport companies as well as having cameras tailored to your particular vehicle.</p>
+      <p *ngIf="lang.getLang() == 'thai'">กล้อง IP, Analog และ AHD จำนวนมากได้รับการออกแบบมาเป็นพิเศษสำหรับคุณ</p>
+      <div class="row">
+        <div class="col-md-4">
+          <a routerLink="/cameras/ip">
+            <h2 class="text-center">IP Cameras</h2>
+            <img class="d-block w-100" src="assets/img/ip-camera.jpg" alt="IP Cameras">
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a routerLink="/cameras/ipanalog">
+            <h2 class="text-center">Analog Cameras</h2>
+            <img class="d-block w-100" src="assets/img/analog-camera.jpg" alt="Analog Cameras">  
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a routerLink="/cameras/ahd">
+            <h2 class="text-center">AHD Cameras</h2>
+            <img class="d-block w-100" src="assets/img/ahd-camera.jpg" alt="AHD Cameras">
+          </a>
+        </div>
+      </div>
+      <p class="text-center"><a routerLink="/cameras" class="btn btn-primary">
+        <span *ngIf="lang.getLang() == 'english'">View our Cameras</span>
+        <span *ngIf="lang.getLang() == 'thai'">ดูกล้องของเรา</span>
+      </a></p>
+    </article>
+    <hr>
+    <article>
+      <h2 class="text-center">
+        <span *ngIf="lang.getLang() == 'english'">Software</span>
+        <span *ngIf="lang.getLang() == 'thai'">ซอฟต์แวร์</span>
+      </h2>
+      <p *ngIf="lang.getLang() == 'english'">Our Cloud-based server CEIBA 2 software with  GPS, video, and metadata, offers exceptional value, in comparison to GPS only tracking solutions offered by our competitors.</p>
+      <p *ngIf="lang.getLang() == 'thai'">ซอฟต์แวร์เซิร์ฟเวอร์ CEIBA 2 ที่ใช้ระบบคลาวด์ของเรากับ GPS วิดีโอและข้อมูลเมตามีค่าที่โดดเด่นเมื่อเทียบกับโซลูชันการติดตาม GPS เฉพาะที่นำเสนอโดยคู่แข่งของเรา</p>
+      <div class="row">
+        <div class="col-md">
+          <a routerLink="/ceiba">
+            <h3 class="text-center">CEIBA 2</h3>
+            <img class="w-100" src="assets/img/554872b6d0a1b.png" alt="CEIBA 2">
+          </a>
+        </div>
+        <div class="col-md">
+          <a routerLink="/n9m-platform-firmware">
+            <h3 class="text-center">N9M Platform Firmware</h3>
+            <img class="w-100" src="assets/img/55486b2d5637b.png" alt="N9M Platform Firmware">
+          </a>
+        </div>
+        <div class="col-md">
+          <a routerLink="/auto-station-report">
+            <h3 class="text-center">Auto Station Report</h3>
+            <img class="w-100" src="assets/img/567d0c4033938.jpg" alt="Auto Station Report">
+          </a>
+        </div>
+        <div class="col-md">
+          <a routerLink="/central-monitoring-software">
+            <h3 class="text-center">Central Monitoring Software</h3>
+            <img class="w-100" src="assets/img/52df6c09ecad2.jpg" alt="Central Monitoring Software">
+          </a>
+        </div>
+      </div>
+    </article>
+    <hr>
+    <article>
+      <h2 class="text-center">
+        <span *ngIf="lang.getLang() == 'english'">Accessories</span>
+        <span *ngIf="lang.getLang() == 'thai'">อุปกรณ์</span>
+      </h2>
+      <p *ngIf="lang.getLang() == 'english'">As well as our infamous MDVRs and Camera options, we offer a wide range of accesories to complete your Mobile Digital Video Recording Systems and requirements. Our accesories range from hard drives, POE switches and cables to touch screen display units, power supplies and disk readers.</p>
+      <p *ngIf="lang.getLang() == 'thai'">MDVR และตัวเลือกกล้องที่น่าอับอายของเราทำให้เราสามารถเข้าถึงระบบบันทึกวิดีโอดิจิตอลสำหรับมือถือและความต้องการได้หลากหลาย อุปกรณ์เสริมของเรามีตั้งแต่ฮาร์ดไดร์ฟสวิตช์ POE และสายเคเบิ้ลเพื่อสัมผัสหน้าจออุปกรณ์ไฟฟ้าและเครื่องอ่านดิสก์</p>
+      <div class="row">
+        <div class="col-md" *ngFor="let item of accessories">
+          <a routerLink="/accessories/{{ item.URL.S }}">
+            <p class="lead text-center">{{ item.Name.S }}</p>
+            <img class="w-100" [src]="item.ImgUrl.S" [alt]="item.Name.S">
+          </a>
+        </div>
+      </div>
+      <p class="text-center"><a routerLink="/accessories" class="btn btn-primary">
+        <span *ngIf="lang.getLang() == 'english'">View all our Accessories</span>
+        <span *ngIf="lang.getLang() == 'thai'">ดูอุปกรณ์เสริมทั้งหมดของเรา</span>
+      </a></p>
+    </article>
+  </section>
+</div>

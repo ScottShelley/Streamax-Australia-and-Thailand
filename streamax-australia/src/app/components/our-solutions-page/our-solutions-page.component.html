@@ -1,0 +1,15 @@
+<main class="container">
+  <h1 class="text-center">Solutions</h1>
+  <div class="row" *ngFor="let solution of solutions">
+    <div class="col-md-6">
+      <img class="max-width" [src]="solution.ImgUrl.S" [alt]="'Image of ' + solution.Name.S">
+    </div>
+    <div class="col-md-6">
+      <h3 class="text-center">{{ solution.Name.S }}</h3>
+      <p>{{ solution.Description.S }}</p>
+      <p class="text-center">
+        <a [routerLink]="solution.Name.S" class="btn btn-primary">Check Here for Details</a>
+      </p>
+    </div>
+  </div>
+</main>

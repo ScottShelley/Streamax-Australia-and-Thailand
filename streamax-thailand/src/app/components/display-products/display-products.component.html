@@ -1,0 +1,90 @@
+
+<p class="float-right">
+  View By:
+  <button type="button" (click)="toggle(0)" class="btn btn-link" [disabled]="isSelected[0]">Grid</button>
+  <button type="button" (click)="toggle(1)" class="btn btn-link middle-btn" [disabled]="isSelected[1]">List</button>
+  <button type="button" (click)="toggle(2)" class="btn btn-link" [disabled]="isSelected[2]">Table</button>
+</p>
+<p>Total: {{ products.Count }}</p>
+<hr>
+<div class="row" *ngIf="isSelected[0]">
+  <article class="col-md-6" *ngFor="let item of products.Items | paginate: { itemsPerPage: 4, currentPage: p }">
+    <a [routerLink]="item.URL.S">
+      <h2 class="text-center">{{ item.Name.S }}</h2>
+      <img class="d-block w-100" [src]="item.ImgUrl.S" [alt]="'Image of ' + item.Name.S">
+    </a>
+    <p class="text-center"><a [routerLink]="item.URL.S" class="btn btn-outline-info">Learn More</a></p>
+  </article>
+  <div class="col-12">
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+</div>
+
+<div class="row" *ngIf="isSelected[1]">
+  <article class="col-12" *ngFor="let item of products.Items | paginate: { itemsPerPage: 3, currentPage: p }">
+    <h2 class="text-center"><a [routerLink]="item.URL.S">{{ item.Name.S }}</a></h2>
+    <div class="row">
+      <div class="col-6">
+        <div class="card">
+          <div class="card_img">
+            <a [routerLink]="item.URL.S">
+              <img class="d-block w-100" [src]="item.ImgUrl.S" [alt]="'Image of ' + item.Name.S">
+              <div class="hover-overlay effect-scale">
+                <div class="img_overlay-container">
+                  <div class="img_overlay-icon">
+                    <p class="text-center">
+                      <a class="btn btn-primary" [routerLink]="item.URL.S">
+                        <span *ngIf="lang.getLang() == 'english'">Learn More</span>
+                        <span *ngIf="lang.getLang() == 'thai'">เรียนรู้เพิ่มเติม</span>
+                      </a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <p *ngIf="lang.getLang() == 'english'">{{ item.Description.S }}</p>
+        <p *ngIf="lang.getLang() == 'thai'">{{ item.ThaiDescription.S }}</p>
+        <p class="text-center">
+          <a [routerLink]="item.URL.S" class="btn btn-outline-primary">
+              <span *ngIf="lang.getLang() == 'english'">Learn More</span>
+              <span *ngIf="lang.getLang() == 'thai'">เรียนรู้เพิ่มเติม</span>
+          </a>
+        </p>
+      </div>
+    </div>
+  </article>
+  <div class="col-12">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+</div>
+
+<div *ngIf="isSelected[2]">
+  <table datatable class="table table-hover">
+    <thead>
+      <tr *ngIf="lang.getLang() == 'english'">
+        <th>Name</th>
+        <th>Description</th>
+        <th>Image</th>
+      </tr>
+      <tr *ngIf="lang.getLang() == 'thai'">
+        <th>ชื่อ</th>
+        <th>ลักษณะ</th>
+        <th>ภาพ</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of products.Items">
+        <th><a [routerLink]="item.URL.S">{{ item.Name.S }}</a></th>
+        <td *ngIf="lang.getLang() == 'english'">{{ item.Description.S }}</td>
+        <td *ngIf="lang.getLang() == 'thai'">{{ item.ThaiDescription.S }}</td>
+        <td>
+            <img class="max-width" [src]="item.ImgUrl.S" [alt]="'Image of ' + item.Name.S">
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

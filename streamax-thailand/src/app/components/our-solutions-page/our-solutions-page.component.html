@@ -1,0 +1,42 @@
+<main class="container">
+  <h1 class="text-center" *ngIf="lang.getLang() == 'english'">Solutions</h1>
+  <h1 class="text-center" *ngIf="lang.getLang() == 'thai'">โซลูชั่น</h1>
+  <div class="row" *ngFor="let solution of service.solutions">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card_img">
+            <a [routerLink]="'/our-solutions/' + solution.URL.S">
+              <img class="max-width" [src]="solution.ImgUrl.S" [alt]="'Image of ' + solution.Name.S">
+              <div class="hover-overlay effect-scale">
+                <div class="img_overlay-container">
+                  <div class="img_overlay-icon">
+                    <p class="text-center">
+                      <a class="btn btn-primary" [routerLink]="'/our-solutions/' + solution.URL.S">
+                        <span *ngIf="lang.getLang() == 'english'">Check Here for Details</span>
+                        <span *ngIf="lang.getLang() == 'thai'">ตรวจสอบที่นี่สำหรับรายละเอียด</span>
+                      </a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+        
+      </div>
+      <div class="col-md-6" *ngIf="lang.getLang() == 'english'">
+        <h3 class="text-center">{{ solution.Name.S }}</h3>
+        <p>{{ solution.Description.S }}</p>
+        <p class="text-center">
+          <a [routerLink]="'/our-solutions/' + solution.URL.S" class="btn btn-outline-primary">Check Here for Details</a>
+        </p>
+      </div>
+      <div class="col-md-6" *ngIf="lang.getLang() == 'thai'">
+        <h3 class="text-center">{{ solution.ThaiName.S }}</h3>
+        <p>{{ solution.ThaiDescription.S }}</p>
+        <p class="text-center">
+          <a [routerLink]="'/our-solutions/' + solution.URL.S" class="btn btn-outline-primary">ตรวจสอบที่นี่สำหรับรายละเอียด</a>
+        </p>
+      </div>
+    </div>
+</main>

@@ -1,0 +1,51 @@
+<footer class="container">
+    <div class="row">
+        <div class="col-md">
+            <img src="assets/img/streamax-logo.png" alt="" class="w-100">
+            <p *ngIf="lang.getLang() == 'english'">Streamax Thailand specializes in Mobile Digital Video Recording (MDVR) including cameras and accessories.</p>
+            <p *ngIf="lang.getLang() == 'thai'">Streamax Thailand เชี่ยวชาญด้าน Mobile Video Video Recording (MDVR) รวมทั้งกล้องและอุปกรณ์เสริม</p>
+            <p class="text-center">
+                <a href="https://www.facebook.com/streamaxaustralia.com.au/" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://twitter.com/StreamaxAust" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/streamax_australia/" target="_blank"><i class="fab fa-instagram"></i></a>
+            </p>
+        </div>
+        <div class="col-md">
+            <p class="text-center"><a href="tel:+66(0)818018298">+66(0)818018298</a></p>
+            <p class="text-center"><a href="mailto:info@streamaxthailand.co.th">info@streamaxthailand.co.th</a></p>
+            <p class="text-center">25/34 Moo.13 King Keow 25/1, Rachatewa, Bangplee, SamutPrakan 10540 Thailand</p>
+        </div>
+        <div class="col-lg">
+            <nav class="nav flex-column nav-pills">
+                <a class="nav-link text-center" routerLinkActive="active" routerLink="/our-solutions">
+                    <span *ngIf="lang.getLang() == 'english'">Our Solutions</span>
+                    <span *ngIf="lang.getLang() == 'thai'">โซลูชั่นของเรา</span>
+                </a>
+                <a class="nav-link text-center" routerLinkActive="active" routerLink="/our-products">
+                    <span *ngIf="lang.getLang() == 'english'">Our Products</span>
+                    <span *ngIf="lang.getLang() == 'thai'">ผลิตภัณฑ์ของเรา</span>
+                </a>
+                <a class="nav-link text-center" routerLinkActive="active" routerLink="/mdvr">MDVRs</a>
+                <a class="nav-link text-center" routerLinkActive="active" routerLink="/cameras">
+                    <span *ngIf="lang.getLang() == 'english'">Cameras</span>
+                    <span *ngIf="lang.getLang() == 'thai'">กล้อง</span>
+                </a>
+                <a class="nav-link text-center" routerLinkActive="active" routerLink="/accessories">
+                    <span *ngIf="lang.getLang() == 'english'">Accessories</span>
+                    <span *ngIf="lang.getLang() == 'thai'">อุปกรณ์</span>
+                </a>
+                <a class="nav-link text-center" routerLinkActive="active" routerLink="/about-us">
+                    <span *ngIf="lang.getLang() == 'english'">About Us</span>
+                    <span *ngIf="lang.getLang() == 'thai'">เกี่ยวกับเรา</span>
+                </a>
+                <a class="nav-link text-center" routerLinkActive="active" routerLink="/contact-us">
+                    <span *ngIf="lang.getLang() == 'english'">Contact Us</span>
+                    <span *ngIf="lang.getLang() == 'thai'">ติดต่อเรา</span>
+                </a>
+            </nav>
+        </div>
+    </div>
+    <hr>
+    <p class="text-center">This website was created by <a href="http://shelleysoftwaredevelopment.com.au" target="_blank">Shelley Software Development</a></p>
+    <p class="text-center">&copy; {{ year }} - Streamax Thailand</p>
+</footer>

@@ -1,0 +1,19 @@
+.fas {
+    font-size: 2em;
+}
+
+.dropdown:hover > .dropdown-menu {
+    display: block;
+}
+
+.nav-bg-colour {
+    background-image: linear-gradient(#c1c1c1, #e9ecef 60%, #6395bf);
+}
+
+.nav-link {
+    color: #000 !important;
+}
+
+.active > .nav-link {
+    color: #2FA4E7 !important;
+}
